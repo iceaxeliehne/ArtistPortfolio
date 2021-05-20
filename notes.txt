@@ -1,0 +1,5 @@
+Steps to set appache and serve
+1. to open appache settings copy following command into terminal
+"gp open /etc/apache2/apache2.conf"
+2. Replace apache 2 conf with custom apache configuration.txt
+3. in terminal type "apachectl restart" and enter. Open in browser.
