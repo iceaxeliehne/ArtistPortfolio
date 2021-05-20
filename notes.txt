@@ -1,5 +1,14 @@
 Steps to set appache and serve
 1. to open appache settings copy following command into terminal
 "gp open /etc/apache2/apache2.conf"
-2. Replace apache 2 conf with custom apache configuration.txt
+2. Replace lines 29 to 35 with 
+
+    # Direcrory and files to be served
+    DirectoryIndex index.html index.htm index.php
+    DocumentRoot "${GITPOD_REPO_ROOT}"
+    <Directory "${GITPOD_REPO_ROOT}">
+        AllowOverride all
+        Require all granted
+    </Directory>
+
 3. in terminal type "apachectl restart" and enter. Open in browser.
