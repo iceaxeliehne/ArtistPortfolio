@@ -64,6 +64,7 @@
     }
 
     window.requestAnimationFrame(gameLoop);
+    //comment
 })();
 
 
