@@ -1,6 +1,7 @@
 Steps to set appache and serve
 1. to open appache settings copy following command into terminal
 "gp open /etc/apache2/apache2.conf"
+
 2. Replace lines 29 to 35 with 
 
     # Direcrory and files to be served
