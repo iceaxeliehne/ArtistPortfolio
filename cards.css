@@ -1,0 +1,10 @@
+
+.card_container {
+    width: 400px;
+    height: 600px;
+    border: 3px solid black;
+}
+
+.card_image {
+    width: 100%;
+}
