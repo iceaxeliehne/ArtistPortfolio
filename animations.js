@@ -5,8 +5,8 @@
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
 
-    let secondsPassed;
-    let oldTimeStamp;
+    let secondsPassed = 0.0;
+    let oldTimeStamp = 0.0;
     
     var circles = [];
 
@@ -14,20 +14,24 @@
         "current_Radius" = 0;
         "colour" = "white";
         "timer" = 0.0;
+        "timer_offset" = 0.0;
         "draw" = function() {
             ctx.beginPath();
             ctx.arc(250, 250, this.current_Radius, 0, 2 * Math.PI);
             ctx.fillStyle = this.colour;
             ctx.fill();
         };
-        "animate" = function(secondsPassed) {
-            console.log(this.timer);
+        "animate" = function() {
+            console.log(this.colour);
             //update the timer
-            this.timer += secondsPassed; //time sinse last animate call
+            if (typeof(secondsPassed) == "number") {
+                this.timer = this.timer + secondsPassed; //time sinse last animate call
+            }
+            
             if (this.timer >= 1.0) {
                 this.timer = 0.0;
             }
-            this.current_Radius = this.timer * 250.0;
+            this.current_Radius = this.timer * 400.0;
             this.draw();
         };
 
@@ -41,7 +45,11 @@
     }
 
     var circle = new genericCircle();
-    circle.colour = "red";
+    circle.colour = "white";
+
+    var circle2 = new genericCircle();
+    circle2.colour = "black";
+    circle.timer = 0.5;
     
     drawRectangle(0,0,c.width,c.height,"black");
     //drawCircle(250,250,250,"white");
@@ -58,12 +66,16 @@
         secondsPassed = (timeStamp - oldTimeStamp) / 1000;
         oldTimeStamp = timeStamp;
 
-        circle.animate(secondsPassed);
+        //draw background
+        drawRectangle(0,0,c.width,c.height,"black");
+
+        circle.animate();
+        circle2.animate();
 
         window.requestAnimationFrame(gameLoop);
     }
 
-    window.requestAnimationFrame(gameLoop);
+    //window.requestAnimationFrame(gameLoop);
     //comment
 })();
 
